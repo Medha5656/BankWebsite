@@ -1,0 +1,36 @@
+{% extends 'app/base.html' %}
+<html>
+    <head>
+        {% block title %}List Of Transactions{% endblock %}
+    </head>
+    <body>
+        {% block body %}
+		<h3 style="align-items: center;margin-left: 500px;"><b>List Of transactions</b></h3>
+		<table class="table table-secondary table-stripped">
+  <thead class="table-primary">
+    <tr>
+      <th scope="col">Sender's Id</th>
+      <th scope="col">Sender</th>
+      <th scope="col">Receiver's Id</th>
+      <th scope="col">Receiver</th>
+	  <th scope="col">Ammount</th>
+	  <th scope="col">Time Taken</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for l in list %}
+    <tr>
+      <th scope="row">{{l.trans_from.id}}</th>
+      <td>{{l.trans_from.fname}} {{l.trans_from.lname}}</td>
+      <td>{{l.trans_to.id}}</td>
+	  <td>{{l.trans_to.fname}}{{l.trans_to.lname}}</td>
+	  <td>{{l.ammount}}</td>
+	  <td>{{l.time}}</td>
+
+    </tr>
+	{% endfor %}
+  </tbody>
+</table>
+		{% endblock %}
+	</body>
+</html>

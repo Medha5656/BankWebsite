@@ -1,0 +1,33 @@
+{% extends 'app/base.html' %}
+{% load static %}
+<html>
+	<head>
+		{% block title %} Customers {% endblock %}
+	</head>
+	<body>
+	{% block body %}
+	<h3 style="align-items: center;margin-left: 500px;"><b>Customers</b></h3>
+	<table class="table table-secondary table-stripped">
+	<thead class="table-primary">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+	  <th scope="col">Balance</th>
+	  <th scope="col">Tranfer</th>
+    </tr>
+  </thead>
+  <tbody>
+	{% for c in customers %}
+    <tr>
+      <th scope="row">{{c.id}}</th>
+      <td>{{c.fname}} {{c.lname}}</td>
+      <td>{{c.Email}}</td>
+      <td>{{c.balance}}</td>
+	  <td><a href="{% url 'transaction' id=c.id %}" class="btn btn-primary btn-sm" tabindex="-1" role="button">Transfer</a></td>
+    </tr>
+	{% endfor %}
+  </tbody>
+</table>
+ {% endblock %}
+	</body>
